@@ -48,7 +48,7 @@ namespace NowaKsiazkaTelefoniczna
 
 
 
-                if (string.IsNullOrEmpty(kontakt.Imie) || string.IsNullOrEmpty(kontakt.NumerTelefonu))
+                if (string.IsNullOrEmpty(kontakt.Imie) || string.IsNullOrEmpty(kontakt.NumerTelefonu))      //przeprowadz walidacje, jesli imie lub numer telefonu jest puste to zwroc null
                 {
                     Console.WriteLine("Imie i numer telefonu nie moga byc puste");
                     return null;
@@ -66,7 +66,11 @@ namespace NowaKsiazkaTelefoniczna
 
             ksiazka.DodajKontakty(ksiazka_przykladowa); //dodanie kontaktow z ksiazki przykladowej do glownej ksiazki
 
-           
+           ksiazka.DodajKontakt(new Kontakt("JanWielki", "001", ConsoleColor.Blue ));
+            ksiazka.DodajKontakt(new Kontakt("Jappp", "002" , ConsoleColor.Blue));
+            ksiazka.DodajKontakt(new Kontakt("Anna", "Nowak", "761", "Krakow", ConsoleColor.Blue));
+            ksiazka.DodajKontakt(new Kontakt("Piotr", "K", ConsoleColor.Blue));
+            ksiazka.DodajKontakt(new Kontakt("Krzysztof", "Nowak", "931", "Wroclaw", ConsoleColor.Blue));
 
             while (wybor != "0")
             {
@@ -78,14 +82,17 @@ namespace NowaKsiazkaTelefoniczna
 
                         Kontakt temp_kontakt = null;                                        //tymczasowy obiekt kontaktu z wprowadzonych danych
                         temp_kontakt = new Kontakt(imie, nazwisko, numerTelefonu, adres);
+    
 
-                        Kontakt temp2_kontakt = DodajKontakt(temp_kontakt); //dodanie kontaktu do ksiazki, metoda dodajaca kontakt zwraca obiekt typu Kontakt jesli validacja poprawna lub null
+                        Kontakt temp2_kontakt = DodajKontakt(temp_kontakt); //dodanie kontaktu do ksiazki, metoda dodajaca kontakt zwraca obiekt typu Kontakt jesli validacja poprawna lub null jesli cos wpisalismy zle
+                        temp2_kontakt.Kolor = ConsoleColor.Blue;            //ustawienie koloru niebieskiego dla dla kontaktu wpisanego z reki
                         if (temp2_kontakt != null)                          //jesli kontakt nie jest nullem dodajemy go do ksiazki
                         {
                             ksiazka.DodajKontakt(temp2_kontakt);
 
                             //Console.WriteLine("Pomyślnie dodano kontakt");
                             Funkcje.WyswietlTekst("Pomyślnie dodano kontakt.", ConsoleColor.Green);
+                            
 
                             temp2_kontakt.Wyswietl();                       //wyswietl dane utworzonego kontaktu
                             Console.WriteLine();
@@ -104,48 +111,46 @@ namespace NowaKsiazkaTelefoniczna
                     case "2":
                         
                         string _wybor = null;
+
                         wyswietlKonsoleWyswietlKontakty(out _wybor);            //wyswietl menu wyboru dla wyswietlania kontaktow i w _wybor mam wybor
 
 
-                        //==
+                        // ksiazka.WyswietlKontakty();                             //wyswietl wszystkie kontakty
                         while (_wybor != "0")
                         {
-                            switch(_wybor)
+                            switch (_wybor)
                             {
                                 case "1":
                                     ksiazka.WyswietlKontakty();
                                     break;
-                                case "2":
-                                   
-                                    break;
-                                case "3":
-                                    
-                                    break;
-                                case "4":
-                                   
-                                    break;
-                                case "5":
-                                  
-                                    break;
-                                case "6":
-                                 
-                                    break;
-                                case "7":
+                 
+                               case "6":
+                                    ksiazka.SortujPoImieniu(ksiazka);
+                                    ksiazka.WyswietlKontakty();
                                    
                                     break;
                                 default:
                                     Console.WriteLine("Niepoprawny wybor");
                                     break;
                             }
+
+                            wyswietlKonsoleWyswietlKontakty(out _wybor);            //wyswietl menu wyboru dla wyswietlania kontaktow i w _wybor mam wybor
                         }
-                            //
 
 
-                            break;
+
+                        break;
                     case "0":
                         break;
                     default:
                         Console.WriteLine("Niepoprawny wybor");
+                        //kolorowanie kazdej obiektyu w ksiazce
+                        foreach (var kontakt in ksiazka.kontakty)
+                        {                        
+                            kontakt.Kolor = ConsoleColor.Red;
+                           
+                        }
+                        ksiazka.WyswietlKontakty();
                         break;
                 }
 

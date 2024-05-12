@@ -18,31 +18,43 @@ namespace NowaKsiazkaTelefoniczna
         public string NumerTelefonu { get; set; }
         public string Adres { get; set; }
         
-        public ConsoleColor Kolor { get; set; }                 //zmienna koloru dla konsoli
+        public ConsoleColor Kolor  { get; set; }                 //zmienna koloru dla konsoli
 
 
-        //pusty konstruktor klasy Kontakt, wykonywany zawwse 
-        public Kontakt() : this("", "", "", "")
+
+        public Kontakt()
         {
-            Kolor = ConsoleColor.DarkYellow;                    //kolor domyslny dla nowego kontaktu
+            Kolor = ConsoleColor.DarkYellow; // kolor domyślny dla nowego kontaktu
         }
-        //konstruktor klasy Kontakt przyjmujacy 2 parametry, imie i numer telefonu
-        public Kontakt(string imie, string numerTelefonu)
+
+        public Kontakt(ConsoleColor kolor) : this()
+        {
+            Kolor = kolor;
+        }
+
+        public Kontakt(string imie, string numerTelefonu) : this(ConsoleColor.DarkYellow)
         {
             Imie = imie;
             NumerTelefonu = numerTelefonu;
-            Kolor = ConsoleColor.DarkYellow;
         }
 
-        //konstruktor klasy Kontakt przyjmujacy 4 parametry
-        public Kontakt(string imie, string nazwisko, string numerTelefonu, string adres)
+        public Kontakt(string imie, string numerTelefonu, ConsoleColor kolor) : this(kolor)
         {
             Imie = imie;
+            NumerTelefonu = numerTelefonu;
+        }
+
+        public Kontakt(string imie, string nazwisko, string numerTelefonu, string adres) : this(imie, numerTelefonu)
+        {
             Nazwisko = nazwisko;
-            NumerTelefonu = numerTelefonu;
             Adres = adres;
-            Kolor = ConsoleColor.DarkYellow;
         }
+
+        public Kontakt(string imie, string nazwisko, string numerTelefonu, string adres, ConsoleColor kolor) : this(imie, nazwisko, numerTelefonu, adres)
+        {
+            Kolor = kolor;
+        }
+
 
         //metada wyswietlajaca w konsoli info o kontakcie
         public void Wyswietl()
