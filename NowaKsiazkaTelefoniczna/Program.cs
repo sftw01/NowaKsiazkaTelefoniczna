@@ -100,12 +100,48 @@ namespace NowaKsiazkaTelefoniczna
 
 
                         break;
+
                     case "2":
+                        
+                        string _wybor = null;
+                        wyswietlKonsoleWyswietlKontakty(out _wybor);            //wyswietl menu wyboru dla wyswietlania kontaktow i w _wybor mam wybor
 
-                        ksiazka.WyswietlKontakty();
+
+                        //==
+                        while (_wybor != "0")
+                        {
+                            switch(_wybor)
+                            {
+                                case "1":
+                                    ksiazka.WyswietlKontakty();
+                                    break;
+                                case "2":
+                                   
+                                    break;
+                                case "3":
+                                    
+                                    break;
+                                case "4":
+                                   
+                                    break;
+                                case "5":
+                                  
+                                    break;
+                                case "6":
+                                 
+                                    break;
+                                case "7":
+                                   
+                                    break;
+                                default:
+                                    Console.WriteLine("Niepoprawny wybor");
+                                    break;
+                            }
+                        }
+                            //
 
 
-                        break;
+                            break;
                     case "0":
                         break;
                     default:
@@ -120,6 +156,15 @@ namespace NowaKsiazkaTelefoniczna
 
  
         }
+
+
+
+
+
+
+
+
+
 
         private static void wyswietlKonsoleGlowna()
         {
@@ -139,5 +184,23 @@ namespace NowaKsiazkaTelefoniczna
             Console.WriteLine("Podaj adres:");
             adres = Console.ReadLine();
         }
+
+        private static void wyswietlKonsoleWyswietlKontakty(out string wybor)
+        {
+            Console.WriteLine("1: Wyswietl wszystkie kontakty");
+            Console.WriteLine("2: Wyswietl kontakty z danego miasta");
+            Console.WriteLine("3: Wyswietl kontakty z danego numeru");
+            Console.WriteLine("4: Wyswietl kontakty z danego przedzialu numerow");
+            Console.WriteLine("5: Wyswietl kontakty z danego przedzialu nazwisk");
+            Console.WriteLine("6: Sortuj alfabetycznie wg imienia");
+            Console.WriteLine("7: Sortuj alfabetycznie wg nazwiska");
+            Console.WriteLine("8: Sortuj wg numeru");
+            Console.WriteLine("0: Powrot");
+            
+            wybor = Console.ReadLine();                                             //zwroc wartosc wpisana przez uzytkownika
+           
+        }
+
+        
     }
 }

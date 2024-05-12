@@ -10,7 +10,7 @@ namespace NowaKsiazkaTelefoniczna
     internal class Ksiazka 
     {
         //lista kontaktow
-        private List<Kontakt> kontakty = new List<Kontakt>();
+        public List<Kontakt> kontakty = new List<Kontakt>();
 
         //metoda dodajaca kontakt do ksiazki
         public void DodajKontakt(Kontakt kontakt)
@@ -38,6 +38,13 @@ namespace NowaKsiazkaTelefoniczna
             }
             Console.WriteLine($" ----------- Ilosc kontaktow: {kontakty.Count} -----------");
   
+        }
+
+
+        //metoda sortuje ksiazke po imieniu
+        public void SortujPoImieniu(Ksiazka ksiazka)
+        {
+            ksiazka.kontakty.Sort((x, y) => string.Compare(x.Imie, y.Imie));
         }
     }
 }

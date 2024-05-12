@@ -30,7 +30,8 @@ namespace NowaKsiazkaTelefoniczna
         public Kontakt(string imie, string numerTelefonu)
         {
             Imie = imie;
-            NumerTelefonu = numerTelefonu;          
+            NumerTelefonu = numerTelefonu;
+            Kolor = ConsoleColor.DarkYellow;
         }
 
         //konstruktor klasy Kontakt przyjmujacy 4 parametry
@@ -40,6 +41,7 @@ namespace NowaKsiazkaTelefoniczna
             Nazwisko = nazwisko;
             NumerTelefonu = numerTelefonu;
             Adres = adres;
+            Kolor = ConsoleColor.DarkYellow;
         }
 
         //metada wyswietlajaca w konsoli info o kontakcie
