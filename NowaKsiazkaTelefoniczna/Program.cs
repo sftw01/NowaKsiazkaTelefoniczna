@@ -57,25 +57,18 @@ namespace NowaKsiazkaTelefoniczna
                 return kontakt;
             }
 
-
-
-
-            Console.WriteLine("Nowa Ksiazka Telefoniczna");
-
-            Console.WriteLine("1: Dodaj nowy kontakt");
-            Console.WriteLine("2: Wyswietl kontakty");
-            Console.WriteLine("3: Zakoncz");
+            wyswietlKonsoleGlowna();
 
             var wybor = Console.ReadLine();
+            
+            var ksiazka_przykladowa = PrzykladoweKontakty();  //moj obiekt ksiazki z przykladowymi kontaktami
+            var ksiazka = new Ksiazka();                       //glowna ksiazka kontaktow
 
+            ksiazka.DodajKontakty(ksiazka_przykladowa); //dodanie kontaktow z ksiazki przykladowej do glownej ksiazki
 
+           
 
-            //moj obiekt ksiazki
-            var ksiazka_przykladowa = PrzykladoweKontakty();
-
-            var ksiazka = new Ksiazka();
-
-            while (wybor != "3")
+            while (wybor != "0")
             {
                 switch (wybor)
                 {
@@ -88,13 +81,14 @@ namespace NowaKsiazkaTelefoniczna
 
                         Kontakt temp2_kontakt = DodajKontakt(temp_kontakt); //dodanie kontaktu do ksiazki, metoda dodajaca kontakt zwraca obiekt typu Kontakt jesli validacja poprawna lub null
                         if (temp2_kontakt != null)                          //jesli kontakt nie jest nullem dodajemy go do ksiazki
-                        {                  
+                        {
                             ksiazka.DodajKontakt(temp2_kontakt);
-                            
+
                             //Console.WriteLine("Pomyślnie dodano kontakt");
-                            Funkcje.WyswietlTekst("Pomyślnie dodano kontakt", ConsoleColor.Green);
+                            Funkcje.WyswietlTekst("Pomyślnie dodano kontakt.", ConsoleColor.Green);
 
                             temp2_kontakt.Wyswietl();                       //wyswietl dane utworzonego kontaktu
+                            Console.WriteLine();
                         }
                         else
                         {
@@ -103,30 +97,35 @@ namespace NowaKsiazkaTelefoniczna
                             Funkcje.WyswietlTekst("Nie dodano kontaktu - walidacja niepoprawnio", ConsoleColor.Red);
                         }
 
-                        //wyswietlenie kontaktow
 
-
-                       // ksiazka.WyswietlKontakty();
 
                         break;
                     case "2":
+
                         ksiazka.WyswietlKontakty();
 
 
                         break;
-                    case "3":
+                    case "0":
                         break;
                     default:
                         Console.WriteLine("Niepoprawny wybor");
                         break;
                 }
-                Console.WriteLine("1: Dodaj nowy kontakt");
-                Console.WriteLine("2: Wyswietl kontakty");
-                Console.WriteLine("3: Zakoncz");
+
+                wyswietlKonsoleGlowna();
                 wybor = Console.ReadLine();
             }
             Console.WriteLine("Koniec programu");
 
+ 
+        }
+
+        private static void wyswietlKonsoleGlowna()
+        {
+            Console.WriteLine("1: Dodaj nowy kontakt");
+            Console.WriteLine("2: Wyswietl kontakty");
+            Console.WriteLine("0: Zakoncz");
         }
 
         private static void wyswietlKonsoleDodajKontakt(out string imie, out string nazwisko, out string numerTelefonu, out string adres)

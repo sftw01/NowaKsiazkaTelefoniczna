@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NowaKsiazkaTelefoniczna
+namespace NowaKsiazkaTelefoniczna 
 {
     //klasa ksiazka przechowujaca kontakty
-    internal class Ksiazka
+    internal class Ksiazka 
     {
         //lista kontaktow
         private List<Kontakt> kontakty = new List<Kontakt>();
@@ -19,19 +19,25 @@ namespace NowaKsiazkaTelefoniczna
         }
 
         //metoda dodajaca liste ksiazke do ksiazki
-        public void DodajKontakty(List<Kontakt> kontakty)
+        public void DodajKontakty(Ksiazka ksiazkaDodawana)
         {
-            this.kontakty.AddRange(kontakty);
+            foreach (var kontakt in ksiazkaDodawana.kontakty)           //przelatuje cala ksiazke i dfodaje do obecnej
+            {
+                kontakty.Add(kontakt);
+            }
         }
 
-        //metoda wyswietlajaca kontakty z ksiazki
+        //metoda wyswietlajaca wszystkie informacje i ilosc kontaktow w ksiazce
         public void WyswietlKontakty()
         {
+            Console.WriteLine($"------------        Lista kontaktow        ------------------");
             foreach (var kontakt in kontakty)
             {
                 kontakt.Wyswietl();
                 //Console.WriteLine();
             }
+            Console.WriteLine($" ----------- Ilosc kontaktow: {kontakty.Count} -----------");
+  
         }
     }
 }
