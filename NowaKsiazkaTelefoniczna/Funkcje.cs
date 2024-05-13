@@ -25,6 +25,21 @@ namespace NowaKsiazkaTelefoniczna
             Console.ResetColor();
         }
 
+        //funcja jako argument przyjmuje tekst i dlugosc jaki ma byc zwrocony string, zwraca tekst skrocony z wysrodkowanym tekstem
+        public static string WysrodkujTekt(string tekst, int dlugosc)
+        {
+            if (tekst.Length > dlugosc)
+            {
+                return tekst.Substring(0, dlugosc);
+            }
+            else
+            {
+                int roznica = dlugosc - tekst.Length;
+                int lewa = roznica / 2;
+                int prawa = roznica - lewa;
+                return new string(' ', lewa) + tekst + new string(' ', prawa);
+            }
+        }
 
         //funkcja wyswietlania kolorowej tabeli z danymi kontaktow
         public static void WyswietlTabele(Ksiazka ksiazka)

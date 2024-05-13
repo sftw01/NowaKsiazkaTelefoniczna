@@ -40,6 +40,7 @@ namespace NowaKsiazkaTelefoniczna
             ConsoleColor domyslnyKolorDEF = ConsoleColor.White;
             ConsoleColor kolorRamkiDEF = ConsoleColor.White;
 
+
             Funkcje.WyswietlTekst("-----------------------------------------------------------------------------------------------------------", kolorRamkiDEF);
             Funkcje.WyswietlTekst("|        Imie       |     Nazwisko      |  Numer telefonu  |     Adres     |  Ulubiony  |  Zablokowany  |", kolorRamkiDEF);
             Funkcje.WyswietlTekst("-----------------------------------------------------------------------------------------------------------", kolorRamkiDEF);
@@ -68,6 +69,52 @@ namespace NowaKsiazkaTelefoniczna
             Funkcje.WyswietlTekst("------------------------------------------------------------------------------------------------------------------", ConsoleColor.White);
         }
 
+
+        //metoda wyswietlajaca wszystkie informacje i ilosc kontaktow w ksiazce z wybrana nazwa tabeli
+        public void WyswietlKontakty(string nazwaTabeli)
+        {
+            //zdefiniowane na stale kolory dla ulubionego i zablokowanego
+            ConsoleColor ulubionyKolorDEF = ConsoleColor.Green;
+            ConsoleColor zablokowanyKolorDEF = ConsoleColor.Red;
+
+            ConsoleColor domyslnyKolorDEF = ConsoleColor.White;
+            ConsoleColor kolorRamkiDEF = ConsoleColor.White;
+
+            ConsoleColor kolorInfo = ConsoleColor.Yellow;
+
+            Funkcje.WyswietlTekst("-----------------------------------------------------------------------------------------------------------", kolorRamkiDEF);
+            Funkcje.WyswietlTekstBezNowejLinii("|", kolorRamkiDEF);
+            Funkcje.WyswietlTekstBezNowejLinii(Funkcje.WysrodkujTekt(nazwaTabeli, 105), kolorInfo);
+            Funkcje.WyswietlTekst("|", kolorRamkiDEF);
+            //Funkcje.WyswietlTekst("-----------------------------------------------------------------------------------------------------------", kolorRamkiDEF);
+
+            Funkcje.WyswietlTekst("-----------------------------------------------------------------------------------------------------------", kolorRamkiDEF);
+            Funkcje.WyswietlTekst("|        Imie       |     Nazwisko      |  Numer telefonu  |     Adres     |  Ulubiony  |  Zablokowany    |", kolorRamkiDEF);
+            Funkcje.WyswietlTekst("-----------------------------------------------------------------------------------------------------------", kolorRamkiDEF);
+
+            foreach (var kontakt in kontakty)
+            {
+                ConsoleColor ulubionyKolor = kontakt.Ulubiony ? ulubionyKolorDEF : domyslnyKolorDEF; // Zielony, jeśli ulubiony, w przeciwnym razie biały
+                ConsoleColor zablokowanyKolor = kontakt.Zablokowany ? zablokowanyKolorDEF : domyslnyKolorDEF; // Czerwony, jeśli zablokowany, w przeciwnym razie biały
+
+                // Wyświetlanie danych kontaktu z odpowiednimi kolorami
+                Funkcje.WyswietlTekstBezNowejLinii("| ", kolorRamkiDEF); Funkcje.WyswietlTekstBezNowejLinii(kontakt.Imie.PadRight(18), kontakt.Kolor);
+                Funkcje.WyswietlTekstBezNowejLinii("| ", kolorRamkiDEF); Funkcje.WyswietlTekstBezNowejLinii(kontakt.Nazwisko.PadRight(18), kontakt.Kolor);
+                Funkcje.WyswietlTekstBezNowejLinii("| ", kolorRamkiDEF); Funkcje.WyswietlTekstBezNowejLinii(kontakt.NumerTelefonu.PadRight(17), kontakt.Kolor);
+                Funkcje.WyswietlTekstBezNowejLinii("| ", kolorRamkiDEF); Funkcje.WyswietlTekstBezNowejLinii(kontakt.Adres.PadRight(14), kontakt.Kolor);
+
+                string ulubiony = kontakt.Ulubiony ? "   Tak" : "   Nie";
+                string zablokowany = kontakt.Zablokowany ? "     Tak" : "     Nie";
+
+                Funkcje.WyswietlTekstBezNowejLinii("| ", kolorRamkiDEF); Funkcje.WyswietlTekstBezNowejLinii(ulubiony.PadRight(11), ulubionyKolor);
+                Funkcje.WyswietlTekstBezNowejLinii("| ", kolorRamkiDEF); Funkcje.WyswietlTekstBezNowejLinii(zablokowany.PadRight(14), zablokowanyKolor);
+
+                Funkcje.WyswietlTekst("| ", kolorRamkiDEF);
+
+            }
+
+            Funkcje.WyswietlTekst("--------------------------------------------------------------------------------------------------------------", ConsoleColor.White);
+        }
 
         //metoda sortuje ksiazke po imieniu
         public void SortujPoImieniu(Ksiazka ksiazka)

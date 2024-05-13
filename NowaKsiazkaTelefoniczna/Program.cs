@@ -137,7 +137,7 @@ namespace NowaKsiazkaTelefoniczna
                                     string wyborMiasta = null;
                                     wyswietlWpiszMiasto(out wyborMiasta);
                                     Ksiazka ksiazka1 = ksiazka.WyszukajPoMiescie(wyborMiasta);
-                                    ksiazka1.WyswietlKontakty();
+                                    ksiazka1.WyswietlKontakty("Kontakty z miasta "+ wyborMiasta );
 
                                     break;
 
