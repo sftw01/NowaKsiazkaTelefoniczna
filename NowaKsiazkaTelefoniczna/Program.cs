@@ -85,12 +85,7 @@ namespace NowaKsiazkaTelefoniczna
             ksiazka.DodajKontakt(new Kontakt("Krzysztof", "Nowak", "931", "Wroclaw", ConsoleColor.Blue));
 
 
-            // testuje moje funkcje
-            TabelaFormat.WyswietlTabele(ksiazka);
-
-            ksiazka.WyswietlKontakty();
-
-            TabelaFormat.WyswietlTabele(ksiazka, "zawartsc ksiazki telefonicznej   jjj", ConsoleColor.Magenta);
+            //TabelaFormat.WyswietlTabele(ksiazka, "zawartsc ksiazki telefonicznej   jjj", ConsoleColor.Magenta);
 
             while (wybor != "0")
             {
@@ -105,16 +100,21 @@ namespace NowaKsiazkaTelefoniczna
     
 
                         Kontakt temp2_kontakt = DodajKontakt(temp_kontakt); //dodanie kontaktu do ksiazki, metoda dodajaca kontakt zwraca obiekt typu Kontakt jesli validacja poprawna lub null jesli cos wpisalismy zle
-                        temp2_kontakt.Kolor = ConsoleColor.Blue;            //ustawienie koloru niebieskiego dla dla kontaktu wpisanego z reki
+                       
                         if (temp2_kontakt != null)                          //jesli kontakt nie jest nullem dodajemy go do ksiazki
                         {
+                            temp2_kontakt.Kolor = ConsoleColor.Blue;            //ustawienie koloru niebieskiego dla dla kontaktu wpisanego z reki
                             ksiazka.DodajKontakt(temp2_kontakt);
 
-                            //Console.WriteLine("Pomyślnie dodano kontakt");
-                            Funkcje.WyswietlTekst("Pomyślnie dodano kontakt.", ConsoleColor.Green);
-                            
+                       
+                            Ksiazka temp = new Ksiazka();
+                            temp.DodajKontakt(temp2_kontakt);
+                            TabelaFormat.WyswietlTabeleKontakt(temp, "Dodano kontakt", ConsoleColor.Green);
 
-                            temp2_kontakt.Wyswietl();                       //wyswietl dane utworzonego kontaktu
+                          
+
+                            //temp2_kontakt.Wyswietl();                       //wyswietl dane utworzonego kontaktu
+                            //TabelaFormat.WyswietlTabele
                             Console.WriteLine();
                         }
                         else
@@ -142,7 +142,8 @@ namespace NowaKsiazkaTelefoniczna
                             switch (_wybor)
                             {
                                 case "1":
-                                    ksiazka.WyswietlKontakty();
+                                    //ksiazka.WyswietlKontakty();
+                                    TabelaFormat.WyswietlTabele(ksiazka, "Wszystkie kontaktyw ksiazce.");
                                     break;
 
                                 case "2":                                                       //wyszukiwanie po miescie

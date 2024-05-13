@@ -31,7 +31,8 @@ namespace NowaKsiazkaTelefoniczna
         //wyswietl metode przeciazona WyswietlTabele o nazwe Tabeli
         public static void WyswietlTabele(Ksiazka ksiazka, string nazwaTabeli)
         {
-            WyswietlNaglowek();
+            WyswietlInfo(nazwaTabeli);
+            WyswietlNaglowekKrotka();
             WyswietlKontakt(ksiazka);
             WyswietlLinie();
             WyswietlIloscKontaktow(ksiazka);
@@ -39,11 +40,24 @@ namespace NowaKsiazkaTelefoniczna
         //wyswietl metode przeciazona WyswietlTabele o nazwe Tabeli i kolor nazwy
         public static void WyswietlTabele(Ksiazka ksiazka, string nazwaTabeli, ConsoleColor kolorNazwy)
         {
+            WyswietlInfo(nazwaTabeli, kolorNazwy);
             WyswietlNaglowek();
             WyswietlKontakt(ksiazka);
             WyswietlLinie();
             WyswietlIloscKontaktow(ksiazka);
         }
+
+        //wyswietl tylko jeden kontakt i tabele info z wybranym kolorem - ktorkie wyswietlenie ibnfo taki messagebox
+        public static void WyswietlTabeleKontakt(Ksiazka ksiazka, string nazwaTabeli, ConsoleColor kolorNazwy)
+        {
+            WyswietlInfo(nazwaTabeli, kolorNazwy);
+            WyswietlNaglowekKrotka();
+            WyswietlKontakt(ksiazka);
+            WyswietlLinie();
+
+        }
+
+
 
         //funkcja wyswietla ramke info z informacja, przyjmuje arg tekst
         public static void WyswietlInfo(string tekst)
