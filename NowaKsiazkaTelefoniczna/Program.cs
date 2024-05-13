@@ -69,7 +69,7 @@ namespace NowaKsiazkaTelefoniczna
             wyswietlKonsoleGlowna(out wybor); //wyswietl menu glowne i w wybor mam wybor
 
             
-            
+
             var ksiazka_przykladowa = PrzykladoweKontakty();  //moj obiekt ksiazki z przykladowymi kontaktami
             var ksiazka = new Ksiazka();                       //glowna ksiazka kontaktow
 
@@ -132,8 +132,16 @@ namespace NowaKsiazkaTelefoniczna
                                 case "1":
                                     ksiazka.WyswietlKontakty();
                                     break;
-                 
-                               case "6":
+
+                                case "2":                                                       //wyszukiwanie po miescie
+                                    string wyborMiasta = null;
+                                    wyswietlWpiszMiasto(out wyborMiasta);
+                                    Ksiazka ksiazka1 = ksiazka.WyszukajPoMiescie(wyborMiasta);
+                                    ksiazka1.WyswietlKontakty();
+
+                                    break;
+
+                                case "6":
                                     ksiazka.SortujPoImieniu(ksiazka);
                                     ksiazka.WyswietlKontakty();
                                    
@@ -168,36 +176,34 @@ namespace NowaKsiazkaTelefoniczna
             }
             Console.WriteLine("Koniec programu");
 
+            
+
  
         }
 
-
-
-
-
-
-
-
-
+        private static void wyswietlWpiszMiasto(out string _wybor)
+        {
+            Console.Write("Podaj miasto: ");
+            _wybor = Console.ReadLine();
+        }
 
         private static void wyswietlKonsoleGlowna( out string _wybor )
         {
             Console.WriteLine("1: Dodaj nowy kontakt");
             Console.WriteLine("2: Wyswietl kontakty");
             Console.WriteLine("0: Zakoncz");
-
             _wybor = Console.ReadLine();                                             //zwroc wartosc wpisana przez uzytkownika
         }
 
         private static void wyswietlKonsoleDodajKontakt(out string imie, out string nazwisko, out string numerTelefonu, out string adres)
         {
-            Console.WriteLine("Podaj imie:");
+            Console.Write("Podaj imie: ");
             imie = Console.ReadLine();
-            Console.WriteLine("Podaj nazwisko:");
+            Console.Write("Podaj nazwisko: ");
             nazwisko = Console.ReadLine();
-            Console.WriteLine("Podaj numer telefonu:");
+            Console.Write("Podaj numer telefonu: ");
             numerTelefonu = Console.ReadLine();
-            Console.WriteLine("Podaj adres:");
+            Console.Write("Podaj adres: ");
             adres = Console.ReadLine();
         }
 

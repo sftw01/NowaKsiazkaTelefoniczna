@@ -74,5 +74,20 @@ namespace NowaKsiazkaTelefoniczna
         {
             ksiazka.kontakty.Sort((x, y) => string.Compare(x.Imie, y.Imie));
         }
+
+        //metoda wyszukuje kontakty po miastu i zwraca nowa ksiazke z tymi kontaktami
+        public Ksiazka WyszukajPoMiescie(string miasto)
+        {
+            Ksiazka ksiazka = new Ksiazka();
+            foreach (var kontakt in kontakty)
+            {
+                if (kontakt.Adres.Contains(miasto))
+                {
+                    ksiazka.DodajKontakt(kontakt);
+                }
+            }
+
+            return ksiazka;
+        }
     }
 }
