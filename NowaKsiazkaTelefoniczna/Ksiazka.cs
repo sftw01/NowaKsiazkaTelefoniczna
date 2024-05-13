@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+
+using NowaKsiazkaTelefoniczna;
 
 namespace NowaKsiazkaTelefoniczna 
 {
@@ -30,14 +33,39 @@ namespace NowaKsiazkaTelefoniczna
         //metoda wyswietlajaca wszystkie informacje i ilosc kontaktow w ksiazce
         public void WyswietlKontakty()
         {
-            Console.WriteLine($"------------        Lista kontaktow        ------------------");
+            //zdefiniowane na stale kolory dla ulubionego i zablokowanego
+            ConsoleColor ulubionyKolorDEF = ConsoleColor.Green;
+            ConsoleColor zablokowanyKolorDEF = ConsoleColor.Red;
+            
+            ConsoleColor domyslnyKolorDEF = ConsoleColor.White;
+            ConsoleColor kolorRamkiDEF = ConsoleColor.White;
+
+            Funkcje.WyswietlTekst("-----------------------------------------------------------------------------------------------------------", kolorRamkiDEF);
+            Funkcje.WyswietlTekst("|        Imie       |     Nazwisko      |  Numer telefonu  |     Adres     |  Ulubiony  |  Zablokowany  |", kolorRamkiDEF);
+            Funkcje.WyswietlTekst("-----------------------------------------------------------------------------------------------------------", kolorRamkiDEF);
+
             foreach (var kontakt in kontakty)
             {
-                kontakt.Wyswietl();
-                //Console.WriteLine();
+                ConsoleColor ulubionyKolor = kontakt.Ulubiony ? ulubionyKolorDEF : domyslnyKolorDEF; // Zielony, jeśli ulubiony, w przeciwnym razie biały
+                ConsoleColor zablokowanyKolor = kontakt.Zablokowany ? zablokowanyKolorDEF : domyslnyKolorDEF; // Czerwony, jeśli zablokowany, w przeciwnym razie biały
+
+                // Wyświetlanie danych kontaktu z odpowiednimi kolorami
+                Funkcje.WyswietlTekstBezNowejLinii("| " , kolorRamkiDEF); Funkcje.WyswietlTekstBezNowejLinii(kontakt.Imie.PadRight(18), kontakt.Kolor);
+                Funkcje.WyswietlTekstBezNowejLinii("| ", kolorRamkiDEF); Funkcje.WyswietlTekstBezNowejLinii(kontakt.Nazwisko.PadRight(18), kontakt.Kolor);
+                Funkcje.WyswietlTekstBezNowejLinii("| ", kolorRamkiDEF); Funkcje.WyswietlTekstBezNowejLinii(kontakt.NumerTelefonu.PadRight(17), kontakt.Kolor);
+                Funkcje.WyswietlTekstBezNowejLinii("| ", kolorRamkiDEF); Funkcje.WyswietlTekstBezNowejLinii(kontakt.Adres.PadRight(14), kontakt.Kolor);
+
+                string ulubiony = kontakt.Ulubiony ? "   Tak" : "   Nie";
+                string zablokowany = kontakt.Zablokowany ? "     Tak" : "     Nie";
+
+                Funkcje.WyswietlTekstBezNowejLinii("| ", kolorRamkiDEF); Funkcje.WyswietlTekstBezNowejLinii(ulubiony.PadRight(11), ulubionyKolor);
+                Funkcje.WyswietlTekstBezNowejLinii("| ", kolorRamkiDEF); Funkcje.WyswietlTekstBezNowejLinii(zablokowany.PadRight(14), zablokowanyKolor);
+
+                Funkcje.WyswietlTekst("| ", kolorRamkiDEF);
+
             }
-            Console.WriteLine($" ----------- Ilosc kontaktow: {kontakty.Count} -----------");
-  
+
+            Funkcje.WyswietlTekst("------------------------------------------------------------------------------------------------------------------", ConsoleColor.White);
         }
 
 

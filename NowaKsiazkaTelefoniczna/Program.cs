@@ -32,6 +32,11 @@ namespace NowaKsiazkaTelefoniczna
             ksiazka.DodajKontakt(new Kontakt("Marek", "Kowalski", "248", "Warszawa"));
             ksiazka.DodajKontakt(new Kontakt("Agnieszka", "Nowak", "541", "Krakow"));
 
+            ksiazka.kontakty[0].Ulubiony = true;
+
+            ksiazka.kontakty[1].Ulubiony = true;
+
+            ksiazka.kontakty[2].Zablokowany = true;
             return ksiazka;
 
         }
@@ -40,7 +45,11 @@ namespace NowaKsiazkaTelefoniczna
 
         static void Main(string[] args)
         {
+            string sciezka = @"C:\Users\admin\Desktop\Moje C#\NowaKsiazkaTelefoniczna\NowaKsiazkaTelefoniczna\EkranPowitalny.txt";
 
+
+            string tekst = System.IO.File.ReadAllText(sciezka);
+            Console.WriteLine(tekst);
 
             //funkcja zwraca obiekt typu Kontakt jesli validacja poprawna lub null
             Kontakt DodajKontakt(Kontakt kontakt)
@@ -56,10 +65,10 @@ namespace NowaKsiazkaTelefoniczna
 
                 return kontakt;
             }
+            string wybor = null;
+            wyswietlKonsoleGlowna(out wybor); //wyswietl menu glowne i w wybor mam wybor
 
-            wyswietlKonsoleGlowna();
-
-            var wybor = Console.ReadLine();
+            
             
             var ksiazka_przykladowa = PrzykladoweKontakty();  //moj obiekt ksiazki z przykladowymi kontaktami
             var ksiazka = new Ksiazka();                       //glowna ksiazka kontaktow
@@ -154,8 +163,8 @@ namespace NowaKsiazkaTelefoniczna
                         break;
                 }
 
-                wyswietlKonsoleGlowna();
-                wybor = Console.ReadLine();
+                wyswietlKonsoleGlowna(out wybor);
+                
             }
             Console.WriteLine("Koniec programu");
 
@@ -171,11 +180,13 @@ namespace NowaKsiazkaTelefoniczna
 
 
 
-        private static void wyswietlKonsoleGlowna()
+        private static void wyswietlKonsoleGlowna( out string _wybor )
         {
             Console.WriteLine("1: Dodaj nowy kontakt");
             Console.WriteLine("2: Wyswietl kontakty");
             Console.WriteLine("0: Zakoncz");
+
+            _wybor = Console.ReadLine();                                             //zwroc wartosc wpisana przez uzytkownika
         }
 
         private static void wyswietlKonsoleDodajKontakt(out string imie, out string nazwisko, out string numerTelefonu, out string adres)

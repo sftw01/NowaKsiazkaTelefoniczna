@@ -13,12 +13,14 @@ namespace NowaKsiazkaTelefoniczna
     //klasa kontakt przechowujaca podstawowe informacje o kontakcie
     internal class Kontakt
     {
-        public string Imie { get; set; }
-        public string Nazwisko { get; set; }
-        public string NumerTelefonu { get; set; }
-        public string Adres { get; set; }
-        
+        public string Imie { get; set; } = "";
+        public string Nazwisko { get; set; } = "";
+        public string NumerTelefonu { get; set; } = "";
+        public string Adres { get; set; } = "";
         public ConsoleColor Kolor  { get; set; }                 //zmienna koloru dla konsoli
+
+        public bool Ulubiony { get; set; } = false;             //czy kontakt jest ulubiony
+        public bool Zablokowany { get; set; } = false;          //czy kontakt jest zablokowany, ochrona przed usunieciem
 
 
 
@@ -61,7 +63,12 @@ namespace NowaKsiazkaTelefoniczna
         {
             //Console.WriteLine($"Imie: {Imie}, Nazwisko: {Nazwisko}, Numer: {NumerTelefonu}, Adres: {Adres}");
             //Console.WriteLine($"Imie: {Imie,-10} Nazwisko: {Nazwisko,-10} Numer: {NumerTelefonu,-15} Adres: {Adres}");
-            Funkcje.WyswietlTekst($"Imie: {Imie,-10} Nazwisko: {Nazwisko,-10} Numer: {NumerTelefonu,-15} Adres: {Adres}", Kolor);
+            string ulubiony = Ulubiony ? "TAK" : "NIE";
+            string zablokowany = Zablokowany ? "TAK" : "NIE";
+
+            Funkcje.WyswietlTekst($"Imie: {Imie,-10} Nazwisko: {Nazwisko,-10} Numer: {NumerTelefonu,-15} Adres: {Adres,-10} Ulubiony: {ulubiony,-5} Zablokowany: {zablokowany,-5}", Kolor);
+
+
         }
     }
 }

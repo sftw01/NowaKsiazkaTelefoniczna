@@ -1,0 +1,16 @@
+
+
+
+*=================plik.txt====================
+*	VERSION:  1.0
+*	NAME:     First Project C#		
+*	DESCRIPTION: Ksiazka Telefoniczna	
+*	AUTHOR:  Konrad Mirek			
+*	DATE:    10.2017
+*	EMAIL:   SFTWMAIL@GMAIL.COM	
+*	WEBSITE:
+*	GITHUB:  GITHUB.COM/sftw01
+----------------------------------------------
+
+			
+
