@@ -84,6 +84,8 @@ namespace NowaKsiazkaTelefoniczna
             ksiazka.DodajKontakt(new Kontakt("Piotr", "K", ConsoleColor.Blue));
             ksiazka.DodajKontakt(new Kontakt("Krzysztof", "Nowak", "931", "Wroclaw", ConsoleColor.Blue));
 
+            ksiazka.kontakty[0].Wyswietl();
+
 
             //TabelaFormat.WyswietlTabele(ksiazka, "zawartsc ksiazki telefonicznej   jjj", ConsoleColor.Magenta);
 

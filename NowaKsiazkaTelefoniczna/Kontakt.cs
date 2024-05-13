@@ -22,6 +22,8 @@ namespace NowaKsiazkaTelefoniczna
         public bool Ulubiony { get; set; } = false;             //czy kontakt jest ulubiony
         public bool Zablokowany { get; set; } = false;          //czy kontakt jest zablokowany, ochrona przed usunieciem
 
+        public string idToken { get; } = TokenGenerator.GenerateToken();               //token do identyfikacji kontaktu
+
 
 
         public Kontakt()
@@ -66,7 +68,7 @@ namespace NowaKsiazkaTelefoniczna
             string ulubiony = Ulubiony ? "TAK" : "NIE";
             string zablokowany = Zablokowany ? "TAK" : "NIE";
 
-            Funkcje.WyswietlTekst($"Imie: {Imie,-10} Nazwisko: {Nazwisko,-10} Numer: {NumerTelefonu,-15} Adres: {Adres,-10} Ulubiony: {ulubiony,-5} Zablokowany: {zablokowany,-5}", Kolor);
+            Funkcje.WyswietlTekst($"Imie: {Imie,-10} Nazwisko: {Nazwisko,-10} Numer: {NumerTelefonu,-15} Adres: {Adres,-10} Ulubiony: {ulubiony,-5} Zablokowany: {zablokowany,-5} ID Token: {idToken, -10}", Kolor);
 
 
         }

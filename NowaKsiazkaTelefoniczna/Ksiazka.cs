@@ -15,6 +15,8 @@ namespace NowaKsiazkaTelefoniczna
         //lista kontaktow
         public List<Kontakt> kontakty = new List<Kontakt>();
 
+        public string idToken { get; } = TokenGenerator.GenerateToken();
+
         //metoda dodajaca kontakt do ksiazki
         public void DodajKontakt(Kontakt kontakt)
         {
