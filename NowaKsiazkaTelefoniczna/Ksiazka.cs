@@ -10,7 +10,7 @@ using NowaKsiazkaTelefoniczna;
 namespace NowaKsiazkaTelefoniczna 
 {
     //klasa ksiazka przechowujaca kontakty
-    internal class Ksiazka 
+    public  class Ksiazka 
     {
         //lista kontaktow
         public List<Kontakt> kontakty = new List<Kontakt>();
@@ -135,6 +135,12 @@ namespace NowaKsiazkaTelefoniczna
             }
 
             return ksiazka;
+        }
+
+        //metoda zwraca ilosc kontaktow w ksiazce
+        public int IloscKontaktow()
+        {
+            return kontakty.Count;
         }
     }
 }

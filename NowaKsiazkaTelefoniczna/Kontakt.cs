@@ -11,7 +11,7 @@ namespace NowaKsiazkaTelefoniczna
     
 
     //klasa kontakt przechowujaca podstawowe informacje o kontakcie
-    internal class Kontakt
+    public  class Kontakt
     {
         public string Imie { get; set; } = "";
         public string Nazwisko { get; set; } = "";

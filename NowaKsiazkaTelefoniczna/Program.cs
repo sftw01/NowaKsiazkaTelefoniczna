@@ -39,6 +39,7 @@ namespace NowaKsiazkaTelefoniczna
             ksiazka.kontakty[2].Zablokowany = true;
             return ksiazka;
 
+
         }
 
 
@@ -73,6 +74,8 @@ namespace NowaKsiazkaTelefoniczna
             var ksiazka_przykladowa = PrzykladoweKontakty();  //moj obiekt ksiazki z przykladowymi kontaktami
             var ksiazka = new Ksiazka();                       //glowna ksiazka kontaktow
 
+            
+
             ksiazka.DodajKontakty(ksiazka_przykladowa); //dodanie kontaktow z ksiazki przykladowej do glownej ksiazki
 
            ksiazka.DodajKontakt(new Kontakt("JanWielki", "001", ConsoleColor.Blue ));
@@ -80,6 +83,14 @@ namespace NowaKsiazkaTelefoniczna
             ksiazka.DodajKontakt(new Kontakt("Anna", "Nowak", "761", "Krakow", ConsoleColor.Blue));
             ksiazka.DodajKontakt(new Kontakt("Piotr", "K", ConsoleColor.Blue));
             ksiazka.DodajKontakt(new Kontakt("Krzysztof", "Nowak", "931", "Wroclaw", ConsoleColor.Blue));
+
+
+            // testuje moje funkcje
+            TabelaFormat.WyswietlTabele(ksiazka);
+
+            ksiazka.WyswietlKontakty();
+
+            TabelaFormat.WyswietlTabele(ksiazka, "zawartsc ksiazki telefonicznej   jjj", ConsoleColor.Magenta);
 
             while (wybor != "0")
             {
@@ -113,6 +124,7 @@ namespace NowaKsiazkaTelefoniczna
                             Funkcje.WyswietlTekst("Nie dodano kontaktu - walidacja niepoprawnio", ConsoleColor.Red);
                         }
 
+                       
 
 
                         break;
