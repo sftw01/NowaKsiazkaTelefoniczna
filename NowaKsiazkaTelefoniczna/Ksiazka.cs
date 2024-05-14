@@ -124,6 +124,13 @@ namespace NowaKsiazkaTelefoniczna
             ksiazka.kontakty.Sort((x, y) => string.Compare(x.Imie, y.Imie));
         }
 
+        //metoda sortuje ksiazke po imieniu
+        public void SortujPoNazwisku(Ksiazka ksiazka)
+        {
+            ksiazka.kontakty.Sort((x, y) => string.Compare(x.Nazwisko, y.Nazwisko));
+        }
+
+
         //metoda wyszukuje kontakty po miastu i zwraca nowa ksiazke z tymi kontaktami
         public Ksiazka WyszukajPoMiescie(string miasto)
         {

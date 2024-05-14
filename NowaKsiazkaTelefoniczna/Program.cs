@@ -158,9 +158,14 @@ namespace NowaKsiazkaTelefoniczna
 
                                 case "6":
                                     ksiazka.SortujPoImieniu(ksiazka);
+                                    ksiazka.WyswietlKontakty();                                  
+                                   break;
+
+                                case "7":
+                                    ksiazka.SortujPoNazwisku(ksiazka);
                                     ksiazka.WyswietlKontakty();
-                                   
                                     break;
+
                                 default:
                                     Console.WriteLine("Niepoprawny wybor");
                                     break;
