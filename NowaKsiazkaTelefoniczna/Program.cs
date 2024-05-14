@@ -158,12 +158,12 @@ namespace NowaKsiazkaTelefoniczna
 
                                 case "6":
                                     ksiazka.SortujPoImieniu(ksiazka);
-                                    ksiazka.WyswietlKontakty();                                  
-                                   break;
+                                    TabelaFormat.WyswietlTabele(ksiazka, "Wszystkie kontaktyw ksiazce. Sortowanie imie.");
+                                    break;
 
                                 case "7":
                                     ksiazka.SortujPoNazwisku(ksiazka);
-                                    ksiazka.WyswietlKontakty();
+                                    TabelaFormat.WyswietlTabele(ksiazka, "Wszystkie kontaktyw ksiazce. Sortowanie nazwisko.");
                                     break;
 
                                 default:
