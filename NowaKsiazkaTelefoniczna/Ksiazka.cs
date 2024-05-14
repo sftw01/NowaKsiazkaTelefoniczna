@@ -23,6 +23,12 @@ namespace NowaKsiazkaTelefoniczna
             kontakty.Add(kontakt);
         }
 
+        //metoda usuwajaca kontakt z ksiazki
+        public void UsunKontakt(Kontakt kontakt)
+        {
+            kontakty.Remove(kontakt);
+        }
+
         //metoda dodajaca liste ksiazke do ksiazki
         public void DodajKontakty(Ksiazka ksiazkaDodawana)
         {
@@ -31,6 +37,17 @@ namespace NowaKsiazkaTelefoniczna
                 kontakty.Add(kontakt);
             }
         }
+
+        //metoda usuwajaca liste ksiazke z ksiazki
+        public void UsunKontakty(Ksiazka ksiazkaUsuwana)
+        {
+            foreach (var kontakt in ksiazkaUsuwana.kontakty)           //przelatuje cala ksiazke i usuwa z obecnej
+            {
+                kontakty.Remove(kontakt);
+            }
+        }
+
+
 
         //metoda wyswietlajaca wszystkie informacje i ilosc kontaktow w ksiazce
         public void WyswietlKontakty()
