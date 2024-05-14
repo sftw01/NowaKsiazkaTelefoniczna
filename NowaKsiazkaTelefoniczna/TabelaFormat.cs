@@ -64,7 +64,7 @@ namespace NowaKsiazkaTelefoniczna
         {
             WyswietlLinie(KolorRamki);
             Funkcje.WyswietlTekstBezNowejLinii("|", KolorRamki);
-            Funkcje.WyswietlTekstBezNowejLinii(Funkcje.WysrodkujTekt(tekst, 105), KolorInfo);
+            Funkcje.WyswietlTekstBezNowejLinii( Funkcje.WysrodkujTekt(tekst, 113), KolorInfo );
             Funkcje.WyswietlTekst("|", KolorRamki);
             WyswietlLinie(KolorRamki);
         }
@@ -74,7 +74,7 @@ namespace NowaKsiazkaTelefoniczna
         {
             WyswietlLinie(KolorRamki);
             Funkcje.WyswietlTekstBezNowejLinii("|", KolorRamki);
-            Funkcje.WyswietlTekstBezNowejLinii(Funkcje.WysrodkujTekt(tekst, 105), kolor);
+            Funkcje.WyswietlTekstBezNowejLinii(Funkcje.WysrodkujTekt(tekst, 113), kolor);
             Funkcje.WyswietlTekst("|", KolorRamki);
             WyswietlLinie(KolorRamki);
         }
@@ -83,7 +83,7 @@ namespace NowaKsiazkaTelefoniczna
         public static void WyswietlNaglowek()
         {
             WyswietlLinie(KolorRamki);
-            Funkcje.WyswietlTekst("|        Imie       |     Nazwisko      |  Numer telefonu  |     Adres     |  Ulubiony  |  Zablokowany    |      ID Token    |   ", KolorRamki);
+            Funkcje.WyswietlTekst("|        Imie     |     Nazwisko    | Numer telefonu |     Adres     |  Ulubiony  |  Zablokowany    |    ID Token   |   ", KolorRamki);
             WyswietlLinie(KolorRamki);
         }
         //funkcja wyswietla ramke informacyjna o zawartosci pol wrrsja skrocoa
@@ -91,7 +91,7 @@ namespace NowaKsiazkaTelefoniczna
         {
 
 
-            Funkcje.WyswietlTekst("|        Imie       |     Nazwisko      |  Numer telefonu  |     Adres     |  Ulubiony  |  Zablokowany    |      ID Token    |   ", KolorRamki);
+            Funkcje.WyswietlTekst("|        Imie     |     Nazwisko    | Numer telefonu |     Adres     |  Ulubiony  |  Zablokowany    |   ID Token  |   ", KolorRamki);
             WyswietlLinie(KolorRamki);
         }
 
@@ -105,9 +105,9 @@ namespace NowaKsiazkaTelefoniczna
                 ConsoleColor ulubionyKolor = kontakt.Ulubiony ? UlubionyKolor : DomyslnyKolor; // Zielony, jeśli ulubiony, w przeciwnym razie biały
                 ConsoleColor zablokowanyKolor = kontakt.Zablokowany ? ZablokowanyKolor : DomyslnyKolor; // Czerwony, jeśli zablokowany, w przeciwnym razie biały
 
-                Funkcje.WyswietlTekstBezNowejLinii("| ", KolorRamki); Funkcje.WyswietlTekstBezNowejLinii(kontakt.Imie.PadRight(18), kontakt.Kolor);
-                Funkcje.WyswietlTekstBezNowejLinii("| ", KolorRamki); Funkcje.WyswietlTekstBezNowejLinii(kontakt.Nazwisko.PadRight(18), kontakt.Kolor);
-                Funkcje.WyswietlTekstBezNowejLinii("| ", KolorRamki); Funkcje.WyswietlTekstBezNowejLinii(kontakt.NumerTelefonu.PadRight(17), kontakt.Kolor);
+                Funkcje.WyswietlTekstBezNowejLinii("| ", KolorRamki); Funkcje.WyswietlTekstBezNowejLinii(kontakt.Imie.PadRight(16), kontakt.Kolor);
+                Funkcje.WyswietlTekstBezNowejLinii("| ", KolorRamki); Funkcje.WyswietlTekstBezNowejLinii(kontakt.Nazwisko.PadRight(16), kontakt.Kolor);
+                Funkcje.WyswietlTekstBezNowejLinii("| ", KolorRamki); Funkcje.WyswietlTekstBezNowejLinii(kontakt.NumerTelefonu.PadRight(15), kontakt.Kolor);
                 Funkcje.WyswietlTekstBezNowejLinii("| ", KolorRamki); Funkcje.WyswietlTekstBezNowejLinii(kontakt.Adres.PadRight(14), kontakt.Kolor);
 
                 string ulubiony = kontakt.Ulubiony ? "   Tak" : "   Nie";
@@ -116,7 +116,7 @@ namespace NowaKsiazkaTelefoniczna
                 Funkcje.WyswietlTekstBezNowejLinii("| ", KolorRamki); Funkcje.WyswietlTekstBezNowejLinii(ulubiony.PadRight(11), ulubionyKolor);
                 Funkcje.WyswietlTekstBezNowejLinii("| ", KolorRamki); Funkcje.WyswietlTekstBezNowejLinii(zablokowany.PadRight(16), zablokowanyKolor);
 
-                Funkcje.WyswietlTekstBezNowejLinii("| ", KolorRamki); Funkcje.WyswietlTekstBezNowejLinii("  "+ kontakt.idToken.PadRight(10), kontakt.Kolor);
+                Funkcje.WyswietlTekstBezNowejLinii("| ", KolorRamki); Funkcje.WyswietlTekstBezNowejLinii("  " + kontakt.idToken.PadRight(10), kontakt.Kolor);
 
                 Funkcje.WyswietlTekst("| ", KolorRamki);
             }
@@ -126,7 +126,7 @@ namespace NowaKsiazkaTelefoniczna
         //linia oddzielajaca
         public static void WyswietlLinie(ConsoleColor kolor)
         {
-            Funkcje.WyswietlTekst("------------------------------------------------------------------------------------------------------------------------------", kolor);
+            Funkcje.WyswietlTekst("-------------------------------------------------------------------------------------------------------------------", kolor);
         }
 
         //wyswiet ilosc kontaktow - ramka sformatowana ILOSC KONTAKTOW
@@ -135,7 +135,7 @@ namespace NowaKsiazkaTelefoniczna
             string ilosc = ksiazka.kontakty.Count.ToString();
             WyswietlLinie(KolorRamki);
             Funkcje.WyswietlTekstBezNowejLinii("|", KolorRamki);
-            Funkcje.WyswietlTekstBezNowejLinii(Funkcje.WysrodkujTekt($"                                                                                 ILOSC KONTAKTOW: {ilosc}", 105), KolorInfo);
+            Funkcje.WyswietlTekstBezNowejLinii(Funkcje.WysrodkujTekt($"                                                                                     ILOSC KONTAKTOW: {ilosc}", 113), KolorInfo);
 
             Funkcje.WyswietlTekst("|", KolorRamki);
             WyswietlLinie(KolorRamki);
