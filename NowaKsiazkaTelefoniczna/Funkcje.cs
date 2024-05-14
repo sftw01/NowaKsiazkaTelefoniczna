@@ -22,7 +22,8 @@ namespace NowaKsiazkaTelefoniczna
         {
             Console.ForegroundColor = kolor;
             Console.Write(tekst);
-            Console.ResetColor();
+            Console.ResetColor(); 
+
         }
 
         //funcja jako argument przyjmuje tekst i dlugosc jaki ma byc zwrocony string, zwraca tekst skrocony z wysrodkowanym tekstem
@@ -40,7 +41,6 @@ namespace NowaKsiazkaTelefoniczna
                 return new string(' ', lewa) + tekst + new string(' ', prawa);
             }
         }
-
         //funkcja wyswietlania kolorowej tabeli z danymi kontaktow
         public static void WyswietlTabele(Ksiazka ksiazka)
         {

@@ -107,13 +107,10 @@ namespace NowaKsiazkaTelefoniczna
                         {
                             temp2_kontakt.Kolor = ConsoleColor.Blue;            //ustawienie koloru niebieskiego dla dla kontaktu wpisanego z reki
                             ksiazka.DodajKontakt(temp2_kontakt);
-
-                       
+                      
                             Ksiazka temp = new Ksiazka();
                             temp.DodajKontakt(temp2_kontakt);
                             TabelaFormat.WyswietlTabeleKontakt(temp, "Dodano kontakt", ConsoleColor.Green);
-
-                          
 
                             //temp2_kontakt.Wyswietl();                       //wyswietl dane utworzonego kontaktu
                             //TabelaFormat.WyswietlTabele
@@ -124,10 +121,7 @@ namespace NowaKsiazkaTelefoniczna
                             //jesli kontakt jest nullem wyswietlamy komunikat - bledne dane wprowadzone do kontaktu
                             //Console.WriteLine("Nie dodano kontaktu - walidacja niepoprawnio");
                             Funkcje.WyswietlTekst("Nie dodano kontaktu - walidacja niepoprawnio", ConsoleColor.Red);
-                        }
-
-                       
-
+                        }                       
 
                         break;
 
@@ -136,7 +130,6 @@ namespace NowaKsiazkaTelefoniczna
                         string _wybor = null;
 
                         wyswietlKonsoleWyswietlKontakty(out _wybor);            //wyswietl menu wyboru dla wyswietlania kontaktow i w _wybor mam wybor
-
 
                         // ksiazka.WyswietlKontakty();                             //wyswietl wszystkie kontakty
                         while (_wybor != "0")
@@ -163,7 +156,7 @@ namespace NowaKsiazkaTelefoniczna
 
                                 case "7":
                                     ksiazka.SortujPoNazwisku(ksiazka);
-                                    TabelaFormat.WyswietlTabele(ksiazka, "Wszystkie kontaktyw ksiazce. Sortowanie nazwisko.");
+                                    TabelaFormat.WyswietlTabele(ksiazka, "Wszystkie kontaktyw ksiazce. Sortowanie nazwisko.1");
                                     break;
 
                                 default:
