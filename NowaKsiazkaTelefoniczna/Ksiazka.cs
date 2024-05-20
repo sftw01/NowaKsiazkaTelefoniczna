@@ -16,6 +16,15 @@ namespace NowaKsiazkaTelefoniczna
         public List<Kontakt> kontakty = new List<Kontakt>();
 
         public string idToken { get; } = TokenGenerator.GenerateToken();
+        //konstruktor bezparametrowy
+        public Ksiazka()
+        {
+        }
+        //konstruktor przyjmujacy jako parametr wejsciowy liste IEnumerable<Kontakt>
+        public Ksiazka(IEnumerable<Kontakt> kontakty)
+        {
+            this.kontakty = new List<Kontakt>(kontakty);
+        }
 
         //metoda dodajaca kontakt do ksiazki
         public void DodajKontakt(Kontakt kontakt)

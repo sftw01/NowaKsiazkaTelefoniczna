@@ -41,7 +41,8 @@ namespace NowaKsiazkaTelefoniczna
                 return new string(' ', lewa) + tekst + new string(' ', prawa);
             }
         }
-        //funkcja wyswietlania kolorowej tabeli z danymi kontaktow
+
+        //funkcja wyswietlania kolorowej tabeli z danymi  kontaktow
         public static void WyswietlTabele(Ksiazka ksiazka)
         {
 

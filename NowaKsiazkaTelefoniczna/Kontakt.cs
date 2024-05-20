@@ -8,7 +8,7 @@ using NowaKsiazkaTelefoniczna;
 
 namespace NowaKsiazkaTelefoniczna
 {
-    
+
 
     //klasa kontakt przechowujaca podstawowe informacje o kontakcie
     public  class Kontakt

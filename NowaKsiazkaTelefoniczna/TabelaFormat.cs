@@ -123,6 +123,7 @@ namespace NowaKsiazkaTelefoniczna
 
         }
 
+
         //linia oddzielajaca
         public static void WyswietlLinie(ConsoleColor kolor)
         {

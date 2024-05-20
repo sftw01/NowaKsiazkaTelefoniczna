@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,31 @@ namespace NowaKsiazkaTelefoniczna
 {
     internal class Program
     {
-        
+        //sort a list of contacts by name using LINQ
+        private static IEnumerable<Kontakt> sortujLinq(List<Kontakt> kontakty)
+        {
+            var posortowanaKsiazka = kontakty.OrderBy(k => k.Imie).OrderBy(k => k.Nazwisko);        //sorted by name and surnname as second parameter, 
+            posortowanaKsiazka.ToList().ForEach(k => k.Wyswietl());
+            return posortowanaKsiazka;
+
+        }
+
+        //get ienumerable of contact contain adress as parameter
+        private static IEnumerable<Kontakt> WyszukajPoMiescie(List<Kontakt> kontakty, string miasto)
+        {
+            var posortowanaKsiazka = kontakty.Where(k => k.Adres == miasto);
+            posortowanaKsiazka.ToList().ForEach(k => k.Wyswietl());
+            return posortowanaKsiazka;
+
+        }
+
+        static IEnumerable<Ksiazka> sortujPoImieniuLINQ( IEnumerable<Ksiazka>ksiazka)
+        {
+            var posortowanaKsiazka = ksiazka.OrderBy(k => k.kontakty[0].Imie);
+            posortowanaKsiazka.ToList().ForEach(k => k.WyswietlKontakty());
+            return posortowanaKsiazka;
+
+        }
 
         //funkcja zwraca obiekt ksiazka z przykladowymi kontaktami do testow, 20 kontaktow, numer tele 3 cyfry
         private static Ksiazka PrzykladoweKontakty()
@@ -86,6 +111,14 @@ namespace NowaKsiazkaTelefoniczna
 
             ksiazka.kontakty[0].Wyswietl();
 
+            var posortowana = sortujLinq(ksiazka.kontakty);
+            Ksiazka ksiazka2 = new Ksiazka(posortowana);        //create new book with sorted contacts
+            //ksiazka2.WyswietlKontakty("Posortowana ksiazka");
+            TabelaFormat.WyswietlTabeleKontakt(ksiazka2, "Posortowana ksiazka przez sysLINQ", ConsoleColor.Green);
+
+            posortowana = WyszukajPoMiescie(ksiazka.kontakty, "Warszawa");
+            Ksiazka ksiazka3 = new Ksiazka(posortowana);        //create new book with sorted contacts
+            TabelaFormat.WyswietlTabeleKontakt(ksiazka3, "Kontakty z Warszawy", ConsoleColor.Green);
 
             //TabelaFormat.WyswietlTabele(ksiazka, "zawartsc ksiazki telefonicznej   jjj", ConsoleColor.Magenta);
 
